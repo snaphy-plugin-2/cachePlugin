@@ -2,18 +2,10 @@
 /*jslint browser: true*/
 /*global $, jQuery, $snaphy, angular*/
 angular.module($snaphy.getModuleName())
-  //Routes are defined using ui.routes 
-  .config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
-    function ($locationProvider, $stateProvider, $urlRouterProvider) {
-      $locationProvider.html5Mode(false);
-      //$urlRouterProvider.otherwise('/');
+   //Adding the logic for angular
+    //Adding the logic for angular cache..
+    .config(["localStorageServiceProvider", function (localStorageServiceProvider) {
+        var cachePrefix = $snaphy.loadSettings('cache', "cachePrefix");
 
-      $stateProvider
-        //Provide routes in this way..
-        .state('cache', {
-          url: '/cache',
-          templateUrl: '/cache/views/cache.html',
-          controller: 'cacheControl'
-        });
-
-    }]); //config
+        localStorageServiceProvider.setPrefix(cachePrefix);
+    }]);
