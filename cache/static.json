@@ -1,0 +1,19 @@
+{
+  "css": {
+    "/cache/style/cache.css": "cacheCss"
+  },
+  "js": {
+    "/cache/scripts/routes/cache.js": "cacheRoute",
+    "/cache/scripts/controllers/cache.js": "cacheController"
+  },
+  "moduleDependencies":{
+
+  },
+  "settings": ["/cache/admin-panel-setting.js"],
+  "bodystructure": {
+    "asidebarHook": [],
+    "sidebarHook": [],
+    "headerHook": [],
+    "footerHook":[]
+  }
+}

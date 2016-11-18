@@ -1,0 +1,7 @@
+{
+  "name": "cache",
+  "description": "A plugin for improving loading time at both backend and frontend",
+  "routeExposure": "/cache",
+  "activate": true,
+  "pluginDependencies": {}
+}
