@@ -1,5 +1,8 @@
 'use strict';
 module.exports = function( server, databaseObj, helper, packageObj) {
+	var minify = require('express-minify');
+	var compression = require('compression');
+
 	/**
 	 * Here server is the main app object
 	 * databaseObj is the mapped database from the package.json file
@@ -14,12 +17,24 @@ module.exports = function( server, databaseObj, helper, packageObj) {
 	 * @return {[type]} [description]
 	 */
 	var init = function(){
+		server.use(compression());
+		//Minify the results..
+		server.use(minify({
+			cache: true,
+			js_match: /javascript/,
+			css_match: /css/,
+			sass_match: /scss/,
+			less_match: /less/,
+			stylus_match: /stylus/,
+			coffee_match: /coffeescript/,
+			json_match: /json/,
+			blacklist: /(\.min)\.(css|js)$/
+		}));
 
 	};
-
 
 	//return all the methods that you wish to provide user to extend this plugin.
 	return {
 		init: init
-	}
+	};
 }; //module.exports
