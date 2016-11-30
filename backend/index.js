@@ -17,19 +17,31 @@ module.exports = function( server, databaseObj, helper, packageObj) {
 	 * @return {[type]} [description]
 	 */
 	var init = function(){
-		server.use(compression());
-		//Minify the results..
-		server.use(minify({
-			cache: true,
-			js_match: /javascript/,
-			css_match: /css/,
-			sass_match: /scss/,
-			less_match: /less/,
-			stylus_match: /stylus/,
-			coffee_match: /coffeescript/,
-			json_match: /json/,
-			blacklist: /(\.min)\.(css|js)$/
-		}));
+		const mode = packageObj.selectMode;
+		const modeObj = packageObj.mode;
+		if(modeObj){
+			if(modeObj[mode]){
+				if(modeObj[mode].compression){
+					server.use(compression());
+				}
+
+				if(modeObj[mode].minify){
+					//Minify the results..
+					server.use(minify({
+						cache: true,
+						js_match: /javascript/,
+						css_match: /css/,
+						sass_match: /scss/,
+						less_match: /less/,
+						stylus_match: /stylus/,
+						coffee_match: /coffeescript/,
+						json_match: /json/,
+						blacklist: /(\.min)\.(css|js)$/
+					}));
+				}
+			}
+		}
+
 
 	};
 

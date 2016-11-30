@@ -4,6 +4,9 @@ angular.module($snaphy.getModuleName())
 //Define your services here..
     .factory('SnaphyCache', ["localStorageService", function(localStorageService) {
         //Store cache..data..
+        //default cache..
+        var storeCache = $snaphy.loadSettings('cache', "storeCache") != undefined ? $snaphy.loadSettings('cache', "storeCache")  : true;
+
         /**
          * Store cache data.to localstorage..
          * @param key
@@ -11,7 +14,10 @@ angular.module($snaphy.getModuleName())
          * @returns {*}
          */
         function submit(key, val) {
-            return localStorageService.set(key, val);
+            if(storeCache){
+                return localStorageService.set(key, val);
+            }
+            return null;
         }
 
         //Clear all data..
@@ -25,7 +31,11 @@ angular.module($snaphy.getModuleName())
 
         //Get item
         function getItem(key) {
-            return localStorageService.get(key);
+            if (storeCache) {
+                return localStorageService.get(key);
+
+            }
+            return null;
         }
 
         return {

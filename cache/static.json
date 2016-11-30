@@ -1,13 +1,11 @@
 {
-  "css": {
-    "/cache/style/cache.css": "cacheCss"
-  },
+  "css": {},
   "js": {
     "/cache/scripts/routes/cache.js": "cacheRoute",
-    "/cache/scripts/controllers/cache.js": "cacheController"
+    "/cache/scripts/services/cache.js": "cacheServices"
   },
   "moduleDependencies":{
-
+    "/static/bower_components/angular-local-storage/dist/angular-local-storage.min.js": "LocalStorageModule"
   },
   "settings": ["/cache/admin-panel-setting.js"],
   "bodystructure": {
