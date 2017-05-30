@@ -7,7 +7,8 @@
 //This is the setting file of the plugin..TO be configured according to the user needs..
 var settings = {
   "defaultTemplate": true,
-  "cachePrefix": "snaphyCache"
+  "cachePrefix": "snaphyCache",
+  "storeCache": false
 };
 
 
